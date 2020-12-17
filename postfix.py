@@ -1,4 +1,4 @@
-def eval(r,d={}):
+def eval_expr(r,d={}):
 
     r=r.split()
 
@@ -8,14 +8,23 @@ def eval(r,d={}):
 
     counter=0
 
+    # GJ: Načo robíte toto?
     for i in range(n):
 
         if r[i] in d:
 
             counter+=1
 
-    if counter == 0:
-        return 0
+    # GJ: toto asi nie je v poriadku. Ak tam nie sú premenné, je to výraz bez premenných,
+    # GJ: no a čo? Nemusí byť zato rovný nule, nie? Opravujem zakomentovaním.
+    # if counter == 0:
+    #    return 0
+
+    # GJ: Takto sa cyklus tohto typu v Pythone nerobí.
+    # GJ: Je to *nonpythonic*, explicitne som to zakazoval na prednáške.
+    # GJ: Má tam byť for token in r:
+    # GJ: a potom všade miesto r[i] má byť token.
+    # GJ: Premennú i totiž nikde nepotrebujete, potrebujete r[i].
 
     for i in range(n):
 
@@ -117,8 +126,8 @@ def to_infix(r):
 
             zas.append(txt4)
 
-
-    print(zas.pop())
+    # GJ: return, nie print
+    return zas.pop()
 
 
     
